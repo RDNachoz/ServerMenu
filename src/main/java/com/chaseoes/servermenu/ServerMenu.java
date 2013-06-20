@@ -46,6 +46,18 @@ public class ServerMenu extends JavaPlugin implements Listener {
 			menu.open(event.getPlayer());
 		}
 	}
+		@EventHandler
+	public void onClockClick(PlayerInteractEvent e) {
+		Player p = e.getPlayer();
+		if ((p.getItemInHand().getTypeId() == 347) && e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK){
+			for(Player players : p.getWorld().getPlayers()){
+				p.hidePlayer(players);
+				p.sendMessage(ChatColor.YELLOW + "You Have Toggled Player Visability");
+			}
+
+		}
+
+	}
 
 	private void warpToServer(Player player, String server) {
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
